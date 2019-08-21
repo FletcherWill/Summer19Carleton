@@ -8,6 +8,7 @@
 
 import UIKit
 
+//vc for editing Pacing event list 
 class EditPaceRowViewController: UIViewController {
     
     @IBOutlet weak var eventPicker: UIPickerView!
@@ -71,6 +72,7 @@ extension EditPaceRowViewController: UIPickerViewDelegate, UIPickerViewDataSourc
 
 extension EditPaceRowViewController: UITextFieldDelegate {
     
+    // occurs when user presses return
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         if let time = Int(textField.text!) {
@@ -79,6 +81,7 @@ extension EditPaceRowViewController: UITextFieldDelegate {
         return true
     }
     
+    //when user selcets screen off keyboard. right now just dismisses keyboard
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         timeTextField.resignFirstResponder()
     }

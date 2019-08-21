@@ -8,6 +8,7 @@
 
 import UIKit
 
+// table view cell for editing COP experiment
 class COPTableViewCell: UITableViewCell {
     
     

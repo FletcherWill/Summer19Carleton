@@ -8,6 +8,7 @@
 
 import Foundation
 
+// struct used with editdata.data
 struct DataRow {
     var event: String
     var eventType: Int

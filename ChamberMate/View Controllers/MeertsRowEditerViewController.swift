@@ -8,6 +8,7 @@
 
 import UIKit
 
+// vc for meerts table edit screen
 class MeertsRowEditerViewController: UIViewController {
     
     @IBOutlet weak var inTextFeild: UITextField!
@@ -63,6 +64,7 @@ class MeertsRowEditerViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    //gets index of editdata.data where a time would should be inserted. if inserting 3 into 1,3,3,4 would return 1
     func getInsertIndexOf(time: Int) -> Int{
         var insertIndex = 0
         for event in editData.data {
@@ -73,6 +75,7 @@ class MeertsRowEditerViewController: UIViewController {
         return insertIndex
     }
     
+    //return index of event if it exists or nil
     func getIndexOfRowWith(Event: String, EventType: Int, time: Int) -> Int? {
         var index = 0
         for row in editData.data {
@@ -88,7 +91,9 @@ class MeertsRowEditerViewController: UIViewController {
 
 extension MeertsRowEditerViewController: UITextFieldDelegate {
     
+    //note that if user doesn't press return (just taps screen off keyboard) nothing is saved. You should probably change this
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // if entered value is not an int do nothing. otherwise updatae meertsdata and editdata.data
         if let time = Int(textField.text!) {
             if textField == inTextFeild {
                 if meertsData[row][0] == nil {
@@ -199,6 +204,7 @@ extension MeertsRowEditerViewController: UIPickerViewDelegate, UIPickerViewDataS
         return eventTypes[row]
     }
     
+    //for choosing event type. If no event yet, won't let user move from none, if there is event, user cant select none.
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == mountPicker {
             if meertsData[self.row][2] != nil {

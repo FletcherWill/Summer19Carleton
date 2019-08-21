@@ -10,6 +10,8 @@ import UIKit
 import GoogleSignIn
 import GoogleAPIClientForREST
 
+//export experiment to google drive
+//more info can be found from google
 class ExportViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     
     @IBOutlet weak var googleButton: UIButton!
@@ -21,15 +23,20 @@ class ExportViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDele
     var uploadFolderID: String?
     private weak var timer: Timer?
     
+    @IBOutlet weak var folderNameTextField: UITextField!
+    var folderName: String?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        folderNameTextField.delegate = self
         GIDSignIn.sharedInstance()?.delegate = self
         GIDSignIn.sharedInstance()?.uiDelegate = self
         GIDSignIn.sharedInstance()?.signInSilently()
         GIDSignIn.sharedInstance()?.scopes = [kGTLRAuthScopeDrive]
         updatView()
     }
+    
     
     @IBAction func signInOut(_ sender: UIButton) {
         if googleUser == nil {
@@ -42,10 +49,14 @@ class ExportViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDele
     }
     
     @IBAction func uploadExperiment(_ sender: UIButton) {
+        // can't upload if noone signed inn
         if googleUser != nil {
-            self.populateFolderID(fileName: "Swift Test Folder")
+            // if no name entered default to "Chambermate Data"
+            let folder = folderName ?? "ChamberMate Data"
+            self.populateFolderID(fileName: folder)
+            // keeps trying to upload until succesful every three seconds. You should probably make it stop after certain point and say can't connect
             timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { timer in
-                self.populateFolderID(fileName: "Swift Test Folder")
+                self.populateFolderID(fileName: folder)
                 print(self.uploadFolderID ?? "None")
                 if self.uploadFolderID != nil {
                     self.timer!.invalidate()
@@ -55,10 +66,7 @@ class ExportViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDele
         }
     }
     
-    @IBAction func temp(_ sender: UIButton) {
-        self.uploadFile(name: dbm.getCSVName(), folderID: uploadFolderID!, fileURL: createURL(), service: googleDriveService)
-    }
-    
+    //if authenicator stops working you'll have to do some googling and check bridging header
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         // A nil error indicates a successful login
         if error == nil {
@@ -100,6 +108,7 @@ class ExportViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDele
         }
     }
     
+    //gets id of folder with given name if it exists.
     func getFolderID(name: String, service: GTLRDriveService, user: GIDGoogleUser, completion: @escaping (String?) -> Void) {
         
         let query = GTLRDriveQuery_FilesList.query()
@@ -184,5 +193,19 @@ class ExportViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDele
         return path
     }
     
+}
+
+extension ExportViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        folderName = textField.text
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.folderNameTextField.resignFirstResponder()
+        self.folderNameTextField.text = folderName
+    }
 }
 

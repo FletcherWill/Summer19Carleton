@@ -8,6 +8,7 @@
 
 import Foundation
 
+//model for cop
 struct COP {
     var time: Int
     var timerRunning: Bool
@@ -15,7 +16,6 @@ struct COP {
         return (Double(time)).asString(style: .positional)
     }
     var inCenter: Bool
-    var flags: [Int]
     var objectOne: String
     var objectTwo: String
     
@@ -23,7 +23,6 @@ struct COP {
         self.time = 0
         self.timerRunning = false
         self.inCenter = true
-        self.flags = []
         self.objectOne = objOne
         self.objectTwo = objTwo
     }
@@ -32,12 +31,12 @@ struct COP {
         self.time = time
         self.timerRunning = false
         self.inCenter = true
-        self.flags = []
         self.objectOne = objOne
         self.objectTwo = objTwo
     }
 }
 
+//converts double to a string displaying time
 private extension Double {
     func asString(style: DateComponentsFormatter.UnitsStyle) -> String {
         let formatter = DateComponentsFormatter()

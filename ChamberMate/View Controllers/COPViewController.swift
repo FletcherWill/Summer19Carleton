@@ -8,6 +8,7 @@
 
 import UIKit
 
+//She doesn't care as much about cop. When you are done with pacing, you could make this look nicer and make it so view is updated when user taps and not just after every second. You can probably just call updateviewfrommodel after a click
 class COPViewController: UIViewController {
 
     

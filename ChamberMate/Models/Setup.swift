@@ -20,6 +20,8 @@ class Setup {
     var objectOne: String?
     var objectTwo: String?
     
+    //Pacing needs title, experimenter name, female number, and stud number
+    //COP needs title, name, two objects, and female number
     func updateSelectable() {
         if experimentTitle != nil && experimenterName != nil && !experimentTitle!.isEmpty && !experimenterName!.isEmpty {
             if femaleNumber != nil && studNumber != nil && !femaleNumber!.isEmpty && !studNumber!.isEmpty {

@@ -8,6 +8,7 @@
 
 import UIKit
 
+// I have used this for testing from time to time. feel free to delete
 class TesterViewController: UIViewController {
 
     let dbm = DatabaseManager()
@@ -22,7 +23,7 @@ class TesterViewController: UIViewController {
 
 
     @IBAction func addExperiment(_ sender: UIButton) {
-        dbm.addExperiment(iP: true, nm: "experiment", exp: "bob", fI: "1", sI: "2")
+        dbm.addExperiment(iP: true, nm: "experiment", exp: "bob", fI: "1", sI: "2", fn: "3")
     }
     
     @IBAction func listExperiments(_ sender: UIButton) {

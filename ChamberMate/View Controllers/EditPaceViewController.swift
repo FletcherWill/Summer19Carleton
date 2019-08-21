@@ -8,7 +8,7 @@
 
 import UIKit
 
-
+//vc to edit pacing
 class EditPaceViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
     @IBOutlet weak var meertsTableButton: UIBarButtonItem!
@@ -43,6 +43,7 @@ class EditPaceViewController: UIViewController, UITableViewDelegate, UITableView
         return editData.data.count
     }
     
+    // instruction for creating table view cells
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = meertsTableView.dequeueReusableCell(withIdentifier: "DataCell", for: indexPath) as! MeertsTableViewCell
         let eventsWithTypes = ["Mount","Intro","Ejac"]
@@ -69,6 +70,7 @@ class EditPaceViewController: UIViewController, UITableViewDelegate, UITableView
         return true
     }
     
+    //allows moving of rows
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let rowToMove = editData.data[sourceIndexPath.row]
         if sourceIndexPath.row <= destinationIndexPath.row {
@@ -112,6 +114,7 @@ class EditPaceViewController: UIViewController, UITableViewDelegate, UITableView
         cell.backgroundColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
     }
     
+    // checks if events are possible (if it is the events are saved. She may want it so data is always saved even if events impossible i.e. not in chronological order or kick occurs while out)
     func dataIsLegal() -> Bool {
         var isIn = false
         var prevTime = 0
@@ -177,6 +180,8 @@ extension EditPaceViewController: UICollectionViewDelegate, UICollectionViewData
         return cell
     }
     
+    
+    //deletes flag from collection view and editdata.flags. Note that change is not saved until a legal ordering of events is reached. She may want less user protection than I provide
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.editData.flags.remove(at: indexPath.row)
         self.flagsCollection.deleteItems(at: [indexPath])

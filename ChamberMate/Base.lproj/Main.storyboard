@@ -1144,37 +1144,60 @@
                         <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Google Logo" translatesAutoresizingMaskIntoConstraints="NO" id="JvT-lb-yEf">
-                                <rect key="frame" x="417" y="139" width="279" height="205"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Google Logo" translatesAutoresizingMaskIntoConstraints="NO" id="JvT-lb-yEf">
+                                <rect key="frame" x="442.5" y="120" width="227" height="167"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="JvT-lb-yEf" secondAttribute="height" multiplier="279:205" id="oYg-5H-nIF"/>
+                                </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jzd-qe-VoW">
-                                <rect key="frame" x="482" y="429" width="149" height="61"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Google Sign In">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="signInOut:" destination="sWs-6F-Ztg" eventType="touchUpInside" id="tu1-uT-cb0"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uI6-ON-OrK">
-                                <rect key="frame" x="482" y="498" width="149" height="57"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Upload Experiment">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="uploadExperiment:" destination="sWs-6F-Ztg" eventType="touchUpInside" id="XA8-kQ-e8T"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="0EK-q0-fQG">
+                                <rect key="frame" x="150" y="367" width="812" height="42"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jzd-qe-VoW">
+                                        <rect key="frame" x="0.0" y="0.0" width="237.5" height="42"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Google Sign In">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="signInOut:" destination="sWs-6F-Ztg" eventType="touchUpInside" id="tu1-uT-cb0"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Folder Name" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VCL-36-1GH">
+                                        <rect key="frame" x="287.5" y="0.0" width="237" height="42"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uI6-ON-OrK">
+                                        <rect key="frame" x="574.5" y="0.0" width="237.5" height="42"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Upload Experiment">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="uploadExperiment:" destination="sWs-6F-Ztg" eventType="touchUpInside" id="XA8-kQ-e8T"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstItem="JvT-lb-yEf" firstAttribute="top" secondItem="b9b-92-t95" secondAttribute="top" constant="50" id="0Yu-j3-KOf"/>
+                            <constraint firstItem="0EK-q0-fQG" firstAttribute="leading" secondItem="b9b-92-t95" secondAttribute="leading" constant="150" id="D98-wu-RMX"/>
+                            <constraint firstItem="0EK-q0-fQG" firstAttribute="top" secondItem="JvT-lb-yEf" secondAttribute="bottom" constant="80" id="RYe-Sw-8u6"/>
+                            <constraint firstItem="JvT-lb-yEf" firstAttribute="centerX" secondItem="b9b-92-t95" secondAttribute="centerX" id="TuS-4k-JyY"/>
+                            <constraint firstItem="b9b-92-t95" firstAttribute="trailing" secondItem="0EK-q0-fQG" secondAttribute="trailing" constant="150" id="m5e-9t-sen"/>
+                            <constraint firstItem="JvT-lb-yEf" firstAttribute="height" secondItem="Dih-eP-LDX" secondAttribute="height" multiplier="1:5" id="u9N-bb-exQ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="b9b-92-t95"/>
                     </view>
                     <connections>
+                        <outlet property="folderNameTextField" destination="VCL-36-1GH" id="grM-eR-Hbh"/>
                         <outlet property="googleButton" destination="Jzd-qe-VoW" id="iKJ-UC-rNO"/>
                         <outlet property="uploadButton" destination="uI6-ON-OrK" id="9Mi-Rd-1mh"/>
                     </connections>

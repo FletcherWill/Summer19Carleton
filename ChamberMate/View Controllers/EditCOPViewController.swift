@@ -8,6 +8,7 @@
 
 import UIKit
 
+// see Pacing counterpart for comments
 class EditCOPViewController: UIViewController {
     
     

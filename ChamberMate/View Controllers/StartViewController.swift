@@ -9,12 +9,16 @@
 import UIKit
 import SQLite
 
+//This is the first view the user sees. Everything is wrapped in a navigation controller.
+//I will try to add comments that I think I would find useful. Feel free to ignore them or to email me if you are confused by something. I was rushed making this so there are some things that are named or organized poorly. I appoligize for this and you may want to fix it
 class StartViewController: UIViewController {
 
+    //create instance of dbm that is passed around (by pointer because is a class) by view controllers (vcs)
     let dbm = DatabaseManager()
     
     @IBOutlet weak var newExperimentButton: UIButton!
     
+    //if 5 experiments exist have to delete one before creating another
     var canCreateNewExperiment: Bool {
         return dbm.getExperimentIDs().count < 5
     }
@@ -30,6 +34,7 @@ class StartViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    //called when view is about to appear (even when previous views are popped from navigaion queue to expose it)
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         createNewExperimentDisplay()
@@ -45,7 +50,7 @@ class StartViewController: UIViewController {
     
     
 
-    
+    //give instruction for segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is SetupViewController
         {
@@ -57,6 +62,7 @@ class StartViewController: UIViewController {
         }
     }
     
+    //decides whether segue can occur
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "Open Setup" {
             return canCreateNewExperiment

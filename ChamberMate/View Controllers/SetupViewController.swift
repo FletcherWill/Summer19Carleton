@@ -8,6 +8,7 @@
 
 import UIKit
 
+//vc for user to enter test info and choose pacing or cop
 class SetupViewController: UIViewController {
     
     let notSelectableColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
@@ -42,6 +43,7 @@ class SetupViewController: UIViewController {
         copButton.backgroundColor = UIColor.black
     }
     
+    //when user creates experiment, this vc is popped from navigation stack. This is so user can't press back to get back to it and create more than 5 tests which would cause problems
     override func viewDidDisappear(_ animated: Bool) {
         if var navigationArray = self.navigationController?.viewControllers, navigationArray.count > 2 {
             navigationArray.remove(at: 1)
@@ -77,12 +79,12 @@ class SetupViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Begin Pace" {
-            dbm.addExperiment(iP: true, nm: experimentTitle.text!, exp: experimenterName.text!, fI: femaleNumber.text!, sI: studNumber.text!)
+            dbm.addExperiment(iP: true, nm: experimentTitle.text!, exp: experimenterName.text!, fI: femaleNumber.text!, sI: studNumber.text!, fn: "None")
             let vc = segue.destination as? PaceViewController
             vc!.dbm = self.dbm
             vc!.pace = Pace()
         } else if segue.identifier == "Begin COP" {
-            dbm.addExperiment(iP: false, nm: experimentTitle.text!, exp: experimenterName.text!, fI: objectOne.text!, sI: objectTwo.text!)
+            dbm.addExperiment(iP: false, nm: experimentTitle.text!, exp: experimenterName.text!, fI: objectOne.text!, sI: objectTwo.text!,fn: self.femaleNumber.text!)
             let vc = segue.destination as? COPViewController
             vc!.dbm = self.dbm
             vc!.cop = COP(objOne: objectOne.text!, objTwo: objectTwo.text!)

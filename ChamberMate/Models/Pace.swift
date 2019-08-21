@@ -8,6 +8,8 @@
 
 import Foundation
 
+
+//pace model
 struct Pace {
     
     var time: Int
@@ -31,6 +33,7 @@ struct Pace {
     }
 }
 
+//double to time i.e. 90 -> 1:30
 private extension Double {
     func asString(style: DateComponentsFormatter.UnitsStyle) -> String {
         let formatter = DateComponentsFormatter()

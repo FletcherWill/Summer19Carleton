@@ -8,6 +8,7 @@
 
 import UIKit
 
+// edit cop row. see pacing counterpart if necesary
 class EditCOPRowViewController: UIViewController {
 
     @IBOutlet weak var eventPicker: UIPickerView!

@@ -8,6 +8,7 @@
 
 import UIKit
 
+// This is probaly the least organized vc. You might want to rewrite it if you need to make big changes.
 class PaceViewController: UIViewController {
     
     @IBOutlet var mountButtons: [UIButton]!
